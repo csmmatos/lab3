@@ -1,4 +1,5 @@
 %inicializar warehouse
+%taxonomia.pl
 
 inicializar_sistema :-
     %herança is_a
