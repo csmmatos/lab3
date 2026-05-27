@@ -2,13 +2,17 @@
 
 controlar_seguranca(Sensor, valor_atual, 1) :-
     get_value(Sensor, localizacao, Zona),
-    ( get_value(warehouse, estado_operacional, fechado) ->
+
+    get_value(warehouse, estado_operacional, Estado),
+
+    ( Estado = fechado ->
         new_value(alarm_system, estado, active),
         new_value(automatic_doors, estado, closed),
-        write('[ALERTA] Movimento detetado em: '), write(Zona), nl,
-        write(' -> ALARME DISPARADO E PORTAS TRANCADAS'), nl
+        nl, write('[ALERTA] Movimento detetado em: '), write(Zona), nl,
+        write(' -> ALARME DISPARADO E PORTAS TRANCADAS'), nl, nl
     ;
-        write('[INFO] Movimento detetado em: '), write(Zona), write(' (Armazem Aberto - Operacao Normal).'), nl, nl
+        nl, write('[INFO] Movimento detetado em: '), write(Zona), 
+        write(' (Armazem Aberto - Operacao Normal).'), nl, nl
     ).
 
 controlar_seguranca(_, valor_atual, 0):-

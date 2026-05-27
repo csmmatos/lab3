@@ -27,7 +27,9 @@ executar_teste_seguranca :-
     new_frame(sensor_presenca_corredor_A),
     new_slot(sensor_presenca_corredor_A, is_a, sensor_presence),
     new_value(sensor_presenca_corredor_A, localizacao, 'Corredor de alta segurança A'),
-    write('Teste - Instancia sensor_presenca_coredor_A criada.'), nl,
+    
+    new_demon(sensor_presenca_corredor_A, valor_atual, controlar_seguranca, value, if_write, active),
+    write('Teste - Instancia sensor_presenca_corredor_A criada.'), nl,
 
     write('Teste - Simulado movimento (escrevendo valor 1 no sensor)...'), nl,
     new_value(sensor_presenca_corredor_A, valor_atual, 1),
